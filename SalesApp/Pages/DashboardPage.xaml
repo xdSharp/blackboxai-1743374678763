@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SalesApp.ViewModels"
+             x:Class="SalesApp.Pages.DashboardPage"
+             Title="Dashboard">
+    <RefreshView IsRefreshing="{Binding IsBusy}"
+                 Command="{Binding RefreshCommand}">
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="20">
+                <!-- Header with Date Picker -->
+                <HorizontalStackLayout Spacing="10" 
+                                      VerticalOptions="Center">
+                    <DatePicker Date="{Binding SelectedDate}"
+                                Format="dd MMM yyyy"
+                                WidthRequest="150"/>
+                    <Button Text="Add Sale"
+                            Command="{Binding NavigateToSalesEntryCommand}"
+                            BackgroundColor="#512BD4"
+                            TextColor="White"/>
+                </HorizontalStackLayout>
+
+                <!-- Summary Cards -->
+                <Grid ColumnDefinitions="*,*" 
+                      RowDefinitions="Auto"
+                      ColumnSpacing="15">
+                    <Frame Grid.Column="0" 
+                           CornerRadius="10"
+                           BackgroundColor="#E3F2FD"
+                           Padding="15">
+                        <VerticalStackLayout>
+                            <Label Text="Total Revenue"
+                                   FontAttributes="Bold"/>
+                            <Label Text="{Binding TotalRevenue, StringFormat='${0:N2}'}"
+                                   FontSize="Title"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" 
+                           CornerRadius="10"
+                           BackgroundColor="#E8F5E9"
+                           Padding="15">
+                        <VerticalStackLayout>
+                            <Label Text="Transactions"
+                                   FontAttributes="Bold"/>
+                            <Label Text="{Binding TotalTransactions}"
+                                   FontSize="Title"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </Grid>
+
+                <!-- Recent Sales List -->
+                <Label Text="Recent Sales"
+                       FontSize="Subtitle"
+                       FontAttributes="Bold"/>
+                <CollectionView ItemsSource="{Binding RecentSales}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="10"
+                                   Padding="10"
+                                   Margin="0,0,0,10">
+                                <Grid ColumnDefinitions="*,Auto"
+                                      RowDefinitions="Auto,Auto">
+                                    <Label Grid.Column="0" Grid.Row="0"
+                                           Text="{Binding ProductName}"
+                                           FontAttributes="Bold"/>
+                                    <Label Grid.Column="1" Grid.Row="0"
+                                           Text="{Binding Amount, StringFormat='${0:N2}'}"
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="End"/>
+                                    <Label Grid.Column="0" Grid.Row="1"
+                                           Text="{Binding Date, StringFormat='{0:dd MMM yyyy}'}"
+                                           FontSize="Caption"/>
+                                    <Label Grid.Column="1" Grid.Row="1"
+                                           Text="{Binding Quantity, StringFormat='{0} units'}"
+                                           FontSize="Caption"
+                                           HorizontalOptions="End"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>
