@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:pages="clr-namespace:SalesApp.Pages"
+       x:Class="SalesApp.AppShell">
+    
+    <!-- Register Routes -->
+    <ShellContent Route="Login" 
+                  ContentTemplate="{DataTemplate pages:LoginPage}" />
+    <ShellContent Route="Register" 
+                  ContentTemplate="{DataTemplate pages:RegisterPage}" />
+    <ShellContent Route="Dashboard" 
+                  ContentTemplate="{DataTemplate pages:DashboardPage}" />
+    <ShellContent Route="SalesEntry" 
+                  ContentTemplate="{DataTemplate pages:SalesEntryPage}" />
+    <ShellContent Route="Charts" 
+                  ContentTemplate="{DataTemplate pages:ChartsPage}" />
+
+    <!-- Main Tab Structure -->
+    <TabBar Route="Main">
+        <ShellContent Title="Dashboard" 
+                      Icon="dashboard.png"
+                      ContentTemplate="{DataTemplate pages:DashboardPage}" />
+        <ShellContent Title="Analytics" 
+                      Icon="chart.png"
+                      ContentTemplate="{DataTemplate pages:ChartsPage}" />
+    </TabBar>
+</Shell>
