@@ -1,0 +1,32 @@
+[
+  {
+    "Date": "2023-11-01T00:00:00",
+    "ProductName": "Laptop",
+    "Amount": 1200.00,
+    "Quantity": 2
+  },
+  {
+    "Date": "2023-11-02T00:00:00",
+    "ProductName": "Mouse",
+    "Amount": 25.50,
+    "Quantity": 5
+  },
+  {
+    "Date": "2023-11-05T00:00:00",
+    "ProductName": "Keyboard",
+    "Amount": 45.00,
+    "Quantity": 3
+  },
+  {
+    "Date": "2023-11-10T00:00:00",
+    "ProductName": "Monitor",
+    "Amount": 250.00,
+    "Quantity": 1
+  },
+  {
+    "Date": "2023-11-15T00:00:00",
+    "ProductName": "Laptop",
+    "Amount": 1150.00,
+    "Quantity": 1
+  }
+]
