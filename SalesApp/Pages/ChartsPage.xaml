@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:CommunityToolkit.Maui.Core;assembly=CommunityToolkit.Maui.Core"
+             xmlns:vm="clr-namespace:SalesApp.ViewModels"
+             x:Class="SalesApp.Pages.ChartsPage"
+             Title="Sales Analytics">
+    <RefreshView IsRefreshing="{Binding IsBusy}"
+                 Command="{Binding RefreshCommand}">
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="20">
+                <!-- Date Range Selector -->
+                <Grid ColumnDefinitions="*,*" 
+                      ColumnSpacing="10">
+                    <DatePicker Date="{Binding StartDate}"
+                                Format="dd MMM yyyy"
+                                MaximumDate="{Binding EndDate}"/>
+                    <DatePicker Grid.Column="1"
+                                Date="{Binding EndDate}"
+                                Format="dd MMM yyyy"
+                                MinimumDate="{Binding StartDate}"/>
+                </Grid>
+
+                <!-- Chart Title -->
+                <Label Text="{Binding ChartTitle}"
+                       FontSize="Title"
+                       HorizontalOptions="Center"/>
+
+                <!-- Line Chart -->
+                <chart:LineChart HeightRequest="300"
+                                Background="White"
+                                Series="{Binding Series}"
+                                XAxes="{Binding XAxes}">
+                    <chart:LineChart.ChartBackground>
+                        <SolidColorBrush Color="WhiteSmoke"/>
+                    </chart:LineChart.ChartBackground>
+                </chart:LineChart>
+
+                <!-- Legend -->
+                <Frame CornerRadius="10"
+                       BackgroundColor="#FAFAFA"
+                       Padding="10">
+                    <HorizontalStackLayout Spacing="10">
+                        <BoxView Color="#4CAF50"
+                                 WidthRequest="20"
+                                 HeightRequest="20"
+                                 VerticalOptions="Center"/>
+                        <Label Text="Daily Sales Revenue"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>
