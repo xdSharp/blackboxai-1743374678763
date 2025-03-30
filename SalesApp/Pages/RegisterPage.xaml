@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SalesApp.Pages.RegisterPage"
+             Title="Register">
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Image Source="logo.png"
+               HeightRequest="100"
+               HorizontalOptions="Center"/>
+
+        <Entry Placeholder="Email"
+               Keyboard="Email"
+               Text="{Binding Email}"/>
+
+        <Entry Placeholder="Password"
+               IsPassword="True"
+               Text="{Binding Password}"/>
+
+        <Entry Placeholder="Confirm Password"
+               IsPassword="True"
+               Text="{Binding ConfirmPassword}"/>
+
+        <Button Text="Register"
+                Command="{Binding RegisterCommand}"
+                BackgroundColor="#512BD4"
+                TextColor="White"/>
+
+        <Label Text="Already have an account? Login"
+               TextDecorations="Underline"
+               HorizontalOptions="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NavigateToLoginCommand}"/>
+            </Label.GestureRecognizers>
+        </Label>
+    </VerticalStackLayout>
+</ContentPage>
